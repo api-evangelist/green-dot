@@ -4,84 +4,40 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Green Dot Corporation
 providerId: green-dot
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Fintech
-  - Prepaid Cards
-  - Banking
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Green Dot Corporation API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Fintech
+  - Banking-as-a-Service
+  - Prepaid Cards
+description: Green Dot does not publish rate-limit documentation for its banking-as-a-service /
+  Arc API on its public website. Limits and SLAs for partner traffic are presumed to be defined in
+  the program agreement, scoped per partner / BIN. Numeric values below are conservative placeholders
+  pending direct documentation from Green Dot.
+notes: No public rate-limit documentation found. Reconcile against partner program docs when access
+  is granted.
+sources:
+  - https://www.greendot.com
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Green Dot Corporation API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Green Dot Corporation API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Green Dot Corporation API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Green Dot Corporation API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
+  - name: Partner / BIN issuing API
     scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Green Dot Corporation API
+    metric: varies
+    limit: 'see partner program agreement'
+    notes: Numeric limits are presumed to be set per partner program. Values not publicly documented.
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Clients should implement exponential backoff with jitter on 429 / 503 and respect
+      Retry-After when present.
+  - name: Contractual scoping
+    description: Rate limits are presumed enforced at the partner / program level rather than via
+      a public per-tier policy.
+  - name: PCI / regulatory caution
+    description: Card-issuing and movement-of-money endpoints typically have lower hard limits and
+      stricter abuse / fraud monitoring than read-only endpoints.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

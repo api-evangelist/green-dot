@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -9,122 +10,89 @@ alignedWith:
 provider: Green Dot Corporation
 providerId: green-dot
 publisherName: Green Dot Corporation
-serviceCategory: API
+serviceCategory: Banking-as-a-Service / Embedded Finance
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
+  - FinOps
+  - FOCUS
+  - Banking-as-a-Service
   - Fintech
   - Prepaid Cards
-  - Banking
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Green Dot Corporation API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: 'FOCUS-aligned FinOps for Green Dot Corporation: no public price book is published for
+  the Arc / BaaS APIs. Cost shape is presumed to be a partner-program contract combining program
+  fees, per-account / per-card fees, transaction interchange share, and movement-of-money fees.
+  Treat this document as a placeholder pending direct reconciliation with a Green Dot program
+  agreement.'
+notes: No public pricing or billing documentation. Reconcile against signed partner program
+  agreement when available.
+sources:
+  - https://www.greendot.com
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Negotiated
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
     - Usage
     - Purchase
-    - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
+    - Refund
 focusColumns:
-  ServiceName: Green Dot Corporation
-  ServiceCategory: Developer Tools / API
+  ServiceName: Green Dot Corporation API
+  ServiceCategory: Banking-as-a-Service / Embedded Finance
   ProviderName: Green Dot Corporation
   PublisherName: Green Dot Corporation
   InvoiceIssuerName: Green Dot Corporation
-  PricingCategory: Usage-Based
-  PricingUnit: request
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
+  - name: program_fee
+    description: Monthly program / sponsorship fee per partner
+    unit: month
+    aggregation: sum
+    dimensions:
+      - program
+  - name: active_accounts
+    description: Active card accounts under the program
+    unit: account
+    aggregation: max
+    dimensions:
+      - program
+  - name: card_transactions
+    description: Card authorization and clearing transactions
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - program
+      - card_brand
+  - name: ach_transfers
+    description: ACH / push-to-card / wire transfers initiated through the API
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - program
+      - rail
   - name: api_requests
-    description: Count of billable API requests
+    description: API calls into Green Dot endpoints (operational metric, not directly billed)
     unit: request
     aggregation: sum
     dimensions:
-      - api
+      - program
       - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Green Dot Corporation API
-    baseURL: https://api.greendot.com
-    tags:
-      - Fintech
-      - Prepaid Cards
-      - Banking
-    serviceName: Green Dot Corporation API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+principles:
+  - name: Visibility
+    description: Track program telemetry — accounts, transactions, ACH movement — through Green
+      Dot's partner reporting and reconcile against monthly program invoices.
+  - name: Allocation
+    description: Tag accounts / cards / transactions with consuming product / sub-program so
+      program-fee and interchange splits roll up to the right business owner.
+  - name: Optimization
+    description: Negotiate interchange share at scale; consolidate program-fee SKUs; route
+      transactions through the lower-cost rail (ACH vs card) when possible.
+  - name: Accountability
+    description: Designate a fintech / BaaS owner accountable for the Green Dot program contract,
+      monthly reconciliation, and chargeback / dispute handling.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
