@@ -34,6 +34,8 @@ common:
     url: https://www.linkedin.com/company/green-dot-corporation
   - type: Website
     url: https://www.greendot.com
+  - type: LLMsTxt
+    url: https://developer.greendot.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
