@@ -34,7 +34,7 @@ common:
     url: https://www.linkedin.com/company/green-dot-corporation
   - type: Website
     url: https://www.greendot.com
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developer.greendot.com/llms.txt
 maintainers:
   - FN: Kin Lane
