@@ -28,6 +28,8 @@ apis:
     description: >-
       The Green Dot Corporation API provides access to platform services and data for enterprise integration and automation.
 common:
+  - type: DomainSecurity
+    url: security/green-dot-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/Green-Dot-Corporation
   - type: LinkedIn
@@ -36,6 +38,8 @@ common:
     url: https://www.greendot.com
   - type: LlmsText
     url: https://developer.greendot.com/llms.txt
+  - url: https://www.greendot.com/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
