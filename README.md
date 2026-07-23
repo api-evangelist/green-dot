@@ -1,5 +1,5 @@
 # Green Dot Corporation (green-dot)
-Green Dot Corporation is a major US corporation and Fortune 1000 company. The Green Dot Corporation API provides programmatic access to its platform services, data, and integrations for enterprise customers and partners.
+Green Dot Corporation (NYSE: GDOT) is a US fintech and bank holding company whose subsidiary Green Dot Bank is a chartered, FDIC-insured member bank. Its Green Dot Arc embedded-finance / Banking-as-a-Service (BaaS) platform lets brands and fintech partners embed banking and payments — enrollment, KYC/KYB, accounts, ACH, transfers, bill pay, card issuing, cash deposits, mobile check deposit, disbursements, and P2P — through a REST API surface. The public developer portal (developer.greendot.com) documents 300+ JSON/OAuth2 endpoints; production access and the full Swagger definition are provisioned per-partner after commercial onboarding.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/green-dot/refs/heads/main/apis.yml)
 

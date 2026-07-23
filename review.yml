@@ -1,0 +1,67 @@
+reviewer: API Evangelist
+date: '2026-07-23'
+provider: Green Dot Corporation
+slug: green-dot
+tier: digital
+segment: US Banking-as-a-Service / Embedded Finance
+summary: >-
+  Green Dot Corporation (NYSE: GDOT), through Green Dot Bank and the Green Dot
+  Arc embedded-finance platform, operates a substantial first-party BaaS API
+  surface. The public developer portal at developer.greendot.com documents 300+
+  REST endpoints across ~60 resource groups (accounts, users, enrollments,
+  KYC/KYB, transfers, ACH, bill pay, payment instruments/card issuing, external
+  cards, disbursements, cash deposits/eCash, MRDC mobile check deposit, closed-
+  loop P2P, webhooks, interest, cashback rewards, customer care, locators). This
+  repo was deepened from a single placeholder API entry to 17 apis[] entries
+  mapping to the real documented product families, each pointing at live
+  first-party documentation and reference pages.
+developer_portal: https://developer.greendot.com
+developer_portal_status: 200 (portal + llms.txt reachable; individual doc/reference pages behind a bot/rate-limit challenge, enumerated via llms.txt)
+documented_endpoints: 312 (counted from developer.greendot.com/llms.txt API Reference section)
+resource_groups: ~60 (account, transfers, externalaccount, paymentinstrument, users, businessprofile, billpay, transactions, tokenmanagement, kyc, interestrate, disbursement, cashbackreward, ecash, barcode, mrdc, p2p, and more)
+auth_model: >-
+  OAuth 2.0 (bearer token) over JSON, per BaaS API Authentication guide.
+  Sensitive payloads (identity/KYC, PCI card data) use additional field/payload
+  encryption (documented with BouncyCastle/C# examples). Idempotency keys and
+  standard program-scoped headers are required. Production credentials, program
+  codes, and the full Swagger definition are provisioned per-partner after
+  commercial onboarding; a sandbox environment is provided during onboarding.
+downloadable_specs:
+  openapi: none-public
+  note: >-
+    No publicly downloadable OpenAPI/Swagger or Postman collection was found.
+    The portal is ReadMe-hosted with per-endpoint reference pages and an
+    llms.txt index; the machine-readable Swagger hub is gated behind partner
+    onboarding. Probed developer.greendot.com/openapi.json and
+    /embedded-finance/openapi — both returned the site's bot-challenge page
+    (HTTP 429), not a spec. No specs were harvested; all apis[] entries are
+    humanURL/Documentation-only, honestly reflecting an HTML-doc-only public
+    surface.
+specs_harvested: 0
+fdx_1033_aggregator_posture: >-
+  No documented FDX membership found. On consumer-permissioned data access
+  (CFPB 1033 / open banking), Green Dot is data-source/outbound oriented via
+  aggregator agreements rather than publishing its own public data-access API:
+  a direct-API secure data access agreement with Finicity (a Mastercard
+  company, announced July 2021) and a partnership with Plaid (March 2022)
+  giving GO2bank customers connectivity to 6,000+ Plaid-powered apps. Access to
+  Green Dot account data for third parties therefore flows through
+  aggregators (Finicity/Plaid) rather than a self-serve public first-party API.
+provider_type: Regulated bank (Green Dot Bank) + fintech BaaS platform (Green Dot Arc)
+access: Partner-gated / contact-sales; not self-serve public
+verified_links:
+  - Website https://www.greendot.com (200)
+  - DeveloperPortal https://developer.greendot.com (200)
+  - LlmsText https://developer.greendot.com/llms.txt (200, 131KB)
+  - GitHubOrganization https://github.com/Green-Dot-Corporation (200; org exists, only forks — not an SDK/spec org)
+  - Blog https://www.greendot.com/blog (200)
+  - Business/Developer landing https://www.greendot.com/business-solutions/developer (200)
+unverified_or_absent:
+  - StatusPage status.greendot.com (did not resolve)
+  - Public privacy-policy / terms path on greendot.com (guessed paths 404; developer TermsOfService doc page used instead)
+recommendation: >-
+  Surface is genuinely deep and first-party; represent it as a documented-but-
+  partner-gated BaaS platform. Re-harvest the Swagger definition into openapi/
+  only if/when a machine-readable spec becomes publicly downloadable or is
+  obtained through a partner sandbox. Track FDX/Akoya participation as US 1033
+  compliance matures.

@@ -1,45 +1,452 @@
 aid: green-dot
 url: https://raw.githubusercontent.com/api-evangelist/green-dot/refs/heads/main/apis.yml
 name: Green Dot Corporation
-type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+kind: company
+description: >-
+  Green Dot Corporation (NYSE: GDOT) is a US fintech and bank holding company
+  whose subsidiary Green Dot Bank is a chartered, FDIC-insured member bank. Its
+  Green Dot Arc embedded-finance / Banking-as-a-Service (BaaS) platform lets
+  brands and fintech partners embed banking and payments — account enrollment,
+  KYC/KYB, DDA and prepaid accounts, ACH, transfers, bill pay, card issuing,
+  cash deposits, mobile check deposit, disbursements, and P2P — through a REST
+  API surface. The public developer portal (developer.greendot.com) documents
+  300+ JSON/OAuth2 endpoints; production access, credentials, and the full
+  Swagger definition are provisioned per-partner after a commercial onboarding.
+accessModel:
+  pricing: paid
+  onboarding: contact-sales
+  trial: false
+  try_now: false
+  public: false
+  label: Partner-gated · Contact sales
+  confidence: medium
+  source:
+  - documentation
+  - plans
+  generated: '2026-07-23'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/green-dot.png
 tags:
   - Fintech
+  - Banking as a Service
+  - Embedded Finance
   - Prepaid Cards
   - Banking
-description: >-
-  Green Dot Corporation is a major US corporation and Fortune 1000 company. The Green Dot Corporation API provides programmatic access to its platform services, data, and integrations for enterprise customers and partners.
+  - Payments
+  - Money Movement
+  - United States
 created: '2026-04-19'
-modified: '2026-04-19'
+modified: '2026-07-23'
 specificationVersion: '0.19'
 apis:
-  - aid: green-dot:green-dot-api
-    name: Green Dot Corporation API
-    tags:
-      - Fintech
-      - Prepaid Cards
-      - Banking
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.greendot.com
-    humanURL: https://developer.greendot.com
-    properties:
-      - url: https://developer.greendot.com/docs
-        type: Documentation
+  - aid: green-dot:enrollments-api
+    name: Green Dot Enrollments API
     description: >-
-      The Green Dot Corporation API provides access to platform services and data for enterprise integration and automation.
+      The Enrollments API is typically the first API used in a partner
+      integration and establishes the initial banking relationship for a new
+      end user. It covers account creation, identity capture, KYC (Know Your
+      Customer) / OFAC screening, KYB (Know Your Business) for small-business
+      owners, ITIN/Matricula handling, and Socure SDK-assisted document
+      verification. Requests use JSON with OAuth 2.0 authorization and
+      field-level encryption for sensitive identity data.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/enrollments-api-endpoints
+    tags:
+      - Enrollment
+      - KYC
+      - KYB
+      - Onboarding
+      - Identity
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/enrollments-1
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/kyc-1
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:accounts-users-api
+    name: Green Dot Accounts & Users API
+    description: >-
+      Account and user management endpoints for the BaaS platform: retrieve and
+      update account details, manage account status and terms acceptances,
+      manage users on an account, joint accounts, purses (primary/savings spend
+      buckets), external linked accounts, account fee summaries, statements and
+      tax documents (eStatements, INT-1099), and account lookups by partner
+      consumer identifier. This is the core account-servicing surface used
+      throughout the lifecycle of a customer relationship.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/account-user-management-overview
+    tags:
+      - Accounts
+      - Users
+      - Account Management
+      - Statements
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/accounts
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/users-1
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/purses
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:transaction-history-api
+    name: Green Dot Transaction History API
+    description: >-
+      Transaction history and enrichment endpoints for retrieving posted and
+      pending transactions on an account, transaction events, and transaction
+      categorization. Used by partner applications to render account activity,
+      spend insights, and statements. Returns JSON over OAuth 2.0 with the
+      platform's standard headers and idempotency conventions.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/transaction-history
+    tags:
+      - Transactions
+      - Transaction History
+      - Insights
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/transaction-history
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:transfers-money-movement-api
+    name: Green Dot Transfers & Money Movement API
+    description: >-
+      Transfers APIs enable customers to move funds to and from internal
+      accounts, purses, and external bank accounts. Includes single- and
+      multi-phase transfers, instant transfer service, auto money movement
+      rules, and balance adjustments (promo, instruction credit/debit,
+      disbursement, and their reversals — each configured per program code).
+      Money movement is a foundational capability nearly every partner
+      integration relies on.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/transfers-1
+    tags:
+      - Transfers
+      - Money Movement
+      - Payments
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/transfers-1
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/instant-transfer-service
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/auto-money-movement
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:ach-api
+    name: Green Dot ACH API
+    description: >-
+      ACH APIs support ACH transfers into and out of BaaS accounts, including
+      retrieval and filtering of ACH transfers by status and date range,
+      external account linking, and ACH transfer methods. Supports the ACH
+      money-movement rails behind direct deposit, funding, and disbursement
+      flows on the Green Dot Arc platform.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/ach
+    tags:
+      - ACH
+      - Money Movement
+      - External Accounts
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/ach
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/external-accounts
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/direct-deposit-switch
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:billpay-api
+    name: Green Dot BillPay API
+    description: >-
+      The BillPay API enables bill payment functionality within partner
+      applications, allowing end users to pay billers from their embedded
+      account. Covers payee/biller management, payment scheduling, and payment
+      status. Delivered as JSON over OAuth 2.0 as part of the BaaS foundational
+      API set.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/billpay-1
+    tags:
+      - Bill Pay
+      - Payments
+      - Money Movement
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/billpay-1
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:payment-instruments-api
+    name: Green Dot Payment Instruments API
+    description: >-
+      Payment Instruments APIs manage the cards and tokens tied to an account —
+      issuing and managing payment instruments, custom card options, PCI data
+      access (Full PCI Data Access V2), payment-instrument tokens, eWallet
+      tokens for pushing cards to Apple Pay / Google Pay, and card inventory /
+      order management. Handles the sensitive card-data surface with
+      encryption and tokenization.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/payment-instruments
+    tags:
+      - Card Issuing
+      - Payment Instruments
+      - Tokenization
+      - Digital Wallet
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/payment-instruments
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/ewallet-tokens
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/full-pci-data-access-v2
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:external-card-management-api
+    name: Green Dot External Card Management API
+    description: >-
+      External Card Management APIs let account holders link, list, and remove
+      external debit or credit cards, and support card-funded flows. Used to
+      attach outside cards to a BaaS account for funding and money movement,
+      returning card details and status per linked card.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/external-card-management
+    tags:
+      - External Cards
+      - Card Linking
+      - Funding
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/external-card-management
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:disbursements-api
+    name: Green Dot Disbursements API
+    description: >-
+      The Disbursements API supports paying out funds to recipients — creating
+      recipients, linking payee accounts, executing single-phase transfers with
+      webhook confirmation, and querying maintenance/status. Used for payouts,
+      gig/earned-wage disbursements, refunds, and other outbound money movement
+      to end recipients.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/disbursements-overview
+    tags:
+      - Disbursements
+      - Payouts
+      - Money Movement
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/disbursements-overview
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/create-recipients
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/executing-transfers
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:cash-deposits-ecash-api
+    name: Green Dot Cash Deposits & eCash API
+    description: >-
+      Cash Deposits and Payments APIs — Green Dot's retail cash network
+      capability — let end users add cash or make cash payments at retail
+      locations. Covers eCash, barcode generation and lookup, retailer and
+      store metadata, and PNT (pay-near-me) methods, backed by Green Dot's
+      nationwide retail footprint. Returns barcodes and retailer/store
+      information for in-store cash transactions.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/cash-deposits-and-payments-overview
+    tags:
+      - Cash Deposits
+      - eCash
+      - Barcode
+      - Retail Network
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/ecash-1
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/barcode-generation-1
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/retailers
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:mrdc-check-deposit-api
+    name: Green Dot MRDC (Mobile Check Deposit) API
+    description: >-
+      MRDC (Mobile Remote Deposit Capture) APIs manage mobile check deposits —
+      submitting checks, retrieving MRDC transfers and lists, check images,
+      on-hold transfers, MRDC funding, and paper checks. Includes accept/cancel
+      flows for pending or in-review deposits and fund-fulfillment transfer
+      handling.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/mrdc
+    tags:
+      - Mobile Check Deposit
+      - MRDC
+      - Paper Checks
+      - Money Movement
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/mrdc
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/mrdc-funding
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/paper-checks
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:closed-loop-p2p-api
+    name: Green Dot Closed Loop P2P API
+    description: >-
+      Closed Loop P2P (Peer-to-Peer) APIs move money between two account
+      holders within the same program. Endpoints retrieve individual and listed
+      P2P transfers, track states (accepted, cancelled, rejected, expired), and
+      reverse a disbursement. Enables in-app person-to-person payments inside a
+      partner's closed-loop ecosystem.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/p2p
+    tags:
+      - P2P
+      - Peer to Peer
+      - Payments
+      - Money Movement
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/p2p
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:webhooks-api
+    name: Green Dot Webhooks & Event Notifications
+    description: >-
+      Webhooks provide asynchronous event notifications to partner systems for
+      account updates, transactions, and money-movement events. Documented with
+      webhook samples, transaction webhook samples, and callback methods so
+      partners can keep their systems synchronized with the BaaS platform in
+      near real time rather than polling.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/webhooks-overview
+    tags:
+      - Webhooks
+      - Events
+      - Notifications
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/webhooks-overview
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/webhook-samples
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/transaction-webhooks
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:interest-rate-api
+    name: Green Dot Interest Rate & Accrued Interest API
+    description: >-
+      Interest Rate APIs add and manage interest rates on primary and savings
+      purses and process accrued-interest calculations for a program, including
+      interest-bearing statement details and INT-1099 tax reporting for
+      accounts earning $10 or more per year. Supports high-yield savings and
+      interest features in partner programs.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/interest-rate
+    tags:
+      - Interest
+      - Savings
+      - Banking as a Service
+      - Money Movement
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/interest-rate
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:cashback-rewards-api
+    name: Green Dot Cashback Rewards API
+    description: >-
+      Cashback Rewards APIs manage cashback rewards programs on partner
+      accounts — creating and managing rewards, plus related eGift capability.
+      Lets partners layer loyalty and rewards experiences on top of the
+      underlying banking account.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/cashback-rewards
+    tags:
+      - Rewards
+      - Cashback
+      - Loyalty
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/cashback-rewards
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:customer-care-api
+    name: Green Dot Customer Care API
+    description: >-
+      Customer Care APIs create and manage customer support cases, customize UI
+      for customer support, and enable customers to open support cases directly.
+      Includes dispute automation endpoints so partners can manage disputes and
+      care interactions programmatically within their own experience.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/customer-care
+    tags:
+      - Customer Care
+      - Support
+      - Disputes
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/customer-care
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - aid: green-dot:atm-retail-locators-api
+    name: Green Dot ATM & Retail Locators API
+    description: >-
+      ATM & Retail Locator APIs locate nearby ATMs and Green Dot retail
+      locations for cash deposits, withdrawals, and reload, returning
+      geospatial location and store data. Used to surface the nearest network
+      access points inside a partner application.
+    humanURL: https://developer.greendot.com/embedded-finance/docs/retail-atm-locators
+    tags:
+      - Locators
+      - ATM
+      - Retail Network
+      - Banking as a Service
+      - United States
+    properties:
+      - type: Documentation
+        url: https://developer.greendot.com/embedded-finance/docs/retail-atm-locators
+      - type: APIReference
+        url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
 common:
   - type: DomainSecurity
     url: security/green-dot-domain-security.yml
+  - type: Website
+    url: https://www.greendot.com
+  - type: DeveloperPortal
+    url: https://developer.greendot.com
+  - type: Documentation
+    url: https://developer.greendot.com/embedded-finance/docs/apis-overview
+  - type: APIReference
+    url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
+  - type: Authentication
+    url: https://developer.greendot.com/embedded-finance/docs/baas-api-authentication
+  - type: TermsOfService
+    url: https://developer.greendot.com/embedded-finance/docs/terms-of-use
   - type: GitHubOrganization
     url: https://github.com/Green-Dot-Corporation
   - type: LinkedIn
     url: https://www.linkedin.com/company/green-dot-corporation
-  - type: Website
-    url: https://www.greendot.com
   - type: LlmsText
     url: https://developer.greendot.com/llms.txt
-  - url: https://www.greendot.com/blog
-    type: Blog
+  - type: Blog
+    url: https://www.greendot.com/blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
