@@ -1,0 +1,36 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.greendot.com/embedded-finance/docs/baas-api-authentication
+docs: https://developer.greendot.com/embedded-finance/docs/baas-api-authentication
+summary: >-
+  Green Dot BaaS OAuth 2.0 uses the client-credentials flow with an optional,
+  space-delimited scope parameter on the token request; the granted scope is
+  returned on the token response (e.g. "general demo"). The public developer
+  portal does not publish a full scope catalog — scopes are provisioned per
+  partner/program during commercial onboarding and constrain a credential to
+  its authorized product surface ("out of credential scopes" 401 on overreach).
+  Webhook delivery uses a distinct token scope (post:webhook).
+schemes:
+  - name: oauth2ClientCredentials
+    flow: clientCredentials
+    token_endpoint: '{BaasUrl}/authentication'
+    scope_parameter: optional
+    scope_style: space-delimited
+scopes:
+  - scope: general
+    description: >-
+      Baseline granted scope observed in the documented authentication example
+      token response. Exact grants are partner/program specific.
+    source: docs
+  - scope: demo
+    description: Demo/sandbox scope observed in the documented example token response.
+    source: docs
+  - scope: 'post:webhook'
+    description: >-
+      Scope used to obtain a token for the partner-hosted webhook delivery
+      surface (bank-events auth), per the Webhooks Overview.
+    source: https://developer.greendot.com/embedded-finance/docs/webhooks-overview
+notes: >-
+  No exhaustive scope/permission reference is published publicly; the full set
+  is defined per partner program. This artifact captures the scope MODEL and the
+  scopes named in Green Dot's own documentation — no scopes were invented.

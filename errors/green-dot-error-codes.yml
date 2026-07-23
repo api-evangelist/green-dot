@@ -1,0 +1,68 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.greendot.com/embedded-finance/docs/error-codes-valid-characters
+docs: https://developer.greendot.com/embedded-finance/docs/error-codes-valid-characters
+format: green-dot-code-subcode
+envelope:
+  description: >-
+    Green Dot BaaS errors are returned as an HTTP status plus a numeric business
+    code and subCode with a human-readable description. This is a custom
+    envelope, not RFC 9457 application/problem+json. Some validation outcomes
+    return HTTP 200 with a non-zero code/subCode (e.g. joint-account rules).
+  fields: [httpStatus, code, subCode, description]
+authentication_errors:
+  - {status: 401, description: 'Unauthorized: authorization prefix none/bearer'}
+  - {status: 401, description: 'Unauthorized: invalid authorization format'}
+  - {status: 401, description: 'Unauthorized: invalid authorization token'}
+  - {status: 401, description: 'Unauthorized: expired authorization token'}
+  - {status: 401, description: 'Unauthorized: out of credential scopes'}
+  - {status: 401, description: 'Unauthorized: invalid program code'}
+idempotency_locking:
+  - {status: 409, code: 4091, description: 'API is locked — call timed out waiting for an overlapping active request to complete.'}
+errors:
+  - {status: 400, code: 200, description: 'dateOfBirth is required.'}
+  - {status: 400, code: 700, description: 'dateOfBirth must be in the YYYY-MM-DD format.'}
+  - {status: 400, code: 1000, description: 'The program code in the API path is unknown.'}
+  - {status: 400, code: 1020, description: 'Duplicated address type is not allowed.'}
+  - {status: 400, code: 1040, description: 'isDefault can only be true for one address entry.'}
+  - {status: 400, code: 400, subCode: 501, field: firstName, description: 'firstName exceeds 35 characters.'}
+  - {status: 400, code: 400, subCode: 502, field: lastName, description: 'lastName must be 2-35 characters.'}
+  - {status: 400, code: 400, subCode: 503, field: middleName, description: 'middleName length constraint.'}
+  - {status: 400, code: 400, subCode: 504, field: city, description: 'city exceeds 25 characters.'}
+  - {status: 400, code: 400, subCode: 505, field: addressLine1, description: 'addressLine1 must be 2-40 characters.'}
+  - {status: 400, code: 400, subCode: 506, field: addressLine2, description: 'addressLine2 exceeds 40 characters.'}
+  - {status: 400, code: 640, subCode: 501, field: firstName, description: 'firstName contains invalid characters.'}
+  - {status: 400, code: 640, subCode: 502, field: lastName, description: 'lastName contains invalid characters.'}
+  - {status: 400, code: 640, subCode: 503, field: middleName, description: 'middleName contains invalid characters.'}
+  - {status: 400, code: 640, subCode: 504, field: city, description: 'city contains invalid characters.'}
+  - {status: 400, code: 640, subCode: 505, field: addressLine1, description: 'addressLine1 contains invalid characters.'}
+  - {status: 400, code: 640, subCode: 506, field: addressLine2, description: 'addressLine2 contains invalid characters.'}
+  - {status: 400, code: 650, subCode: 0, description: 'Invalid ISO currency code.'}
+  - {status: 400, code: 650, subCode: 430, description: 'This product does not support this currency.'}
+  - {status: 400, code: 620, subCode: 0, description: 'termsAcceptanceDateTime must be within 720 hours (30 days) of submission.'}
+  - {status: 200, code: 5, subCode: 100, description: 'An account must not be in a locked status to add an additional cardholder.'}
+  - {status: 200, code: 5, subCode: 102, description: 'This account already has 2 account holders.'}
+  - {status: 200, code: 10, description: 'Business account not supported for joint account.'}
+  - {status: 404, code: 10, subCode: 0, description: 'Account Not Found.'}
+  - {status: 503, code: 4610, subCode: 4611, description: 'PRODUCT_NOT_SUPPORT_FEE.'}
+retry_guidance:
+  retry_on: [503]
+  do_not_retry_on: [400, 500]
+  backoff: 'exponential, up to 3 attempts (1-1000ms, 1000-5000ms, 5000-30000ms)'
+valid_characters:
+  name_fields:
+    fields: [firstName, middleName, lastName]
+    ascii_range: 32-126
+    unicode_allowed: false
+    excluded: [33-38, 40-43, 47, 58-64, 91-96, 123-126]
+  address_fields:
+    fields: [city, addressLine1, addressLine2]
+    ascii_ranges: [32-126, 192-255]
+    unicode_allowed: false
+    excluded: [33-34, 36-37, 42-43, 58-64, 91-96, 123-126, 215, 217-220, 247]
+  state:
+    allowed: [AL, AK, AZ, AR, CA, CO, CT, DE, DC, FL, GA, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY]
+note: >-
+  This is the API-level error registry (enrollment/validation/currency/joint-account/
+  fee/auth). Card-transaction decline reasons are delivered as transaction webhook
+  outcomes rather than a public buyer-facing decline-code table.

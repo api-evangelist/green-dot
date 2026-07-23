@@ -1,0 +1,89 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.greendot.com/embedded-finance/docs/idempotency
+docs:
+  idempotency: https://developer.greendot.com/embedded-finance/docs/idempotency
+  authentication: https://developer.greendot.com/embedded-finance/docs/baas-api-authentication
+  encryption: https://developer.greendot.com/embedded-finance/docs/encryption-in-baas-api
+  errors: https://developer.greendot.com/embedded-finance/docs/error-codes-valid-characters
+  healthcheck: https://developer.greendot.com/embedded-finance/docs/healthcheck-apis
+summary: >-
+  Cross-cutting request/response semantics for the Green Dot Arc BaaS API. All
+  requests are JSON over OAuth 2.0 bearer tokens (client-credentials), carry an
+  X-GD-RequestId GUID used for both tracing and idempotency, and use
+  field-level encryption for sensitive identity/PCI data. Resources are scoped
+  under a program code (/programs/{programCode}/...). Errors return a numeric
+  code + subCode envelope (not RFC 9457 problem+json).
+authentication:
+  style: oauth2
+  flow: client_credentials
+  token_header: 'Authorization: Bearer <access_token>'
+  token_endpoint: '{BaasUrl}/authentication'
+  token_ttl_seconds: 86400
+  recommended_cache_seconds: 82800
+  ip_allowlisting_required: true
+idempotency:
+  supported: true
+  mechanism: request-id
+  header: X-GD-RequestId
+  header_type: GUID
+  notes: >-
+    Idempotency is implemented via the X-GD-RequestId (requestId) value. A
+    repeated call with the same requestId AND the same payload returns the same
+    result; a changed payload with the same requestId is treated as a different
+    request. True idempotency is documented on POST /enrollments; retries on
+    HTTP 503 should use exponential backoff (1-1000ms, 1000-5000ms,
+    5000-30000ms) up to 3 attempts. Do not retry on 400 or 500.
+  api_locking:
+    description: >-
+      Selected endpoints prevent overlapping calls via API locking keyed on the
+      values below; a locked call returns 409 (code 4091).
+    endpoints:
+      - endpoint: POST /enrollments
+        lock_keys: [requestId, ssn]
+      - endpoint: POST /purses
+        lock_keys: [accountIdentifier]
+      - endpoint: POST /interestRateTiers
+        lock_keys: [accountIdentifier, userIdentifier]
+    lock_conflict: {status: 409, code: 4091}
+request_tracing:
+  header: X-GD-RequestId
+  scope: request-and-response
+  notes: >-
+    A new GUID must be supplied per API call and is echoed on the response;
+    webhooks also require partners to echo the x-GD-RequestId header.
+encryption:
+  field_level: true
+  algorithm_docs: https://developer.greendot.com/embedded-finance/docs/encryption-in-baas-api
+  notes: >-
+    Fields flagged as encrypted in the API reference must be sent encrypted
+    (plain-text fails); encrypted response fields must be decrypted by the
+    partner. Public keys are exchanged between Green Dot and the partner before
+    testing encrypted endpoints. Reference implementation uses C# + BouncyCastle.
+error_envelope:
+  format: custom
+  shape: 'HTTP status + numeric code + subCode + description'
+  problem_json: false
+  reference: errors/green-dot-error-codes.yml
+versioning:
+  scheme: uri-path
+  notes: >-
+    Versioned resources appear in the path (e.g. Full PCI Data Access V2,
+    barcode generateBarcodeV2, transfer-limits V2). No global API version header
+    is documented; changes are communicated through dated release notes.
+  changelog: changelog/green-dot-changelog.yml
+program_scoping:
+  parameter: programCode
+  in: path
+  notes: >-
+    Most resources are namespaced under /programs/{programCode}/accounts/{accountIdentifier}/...
+    Feature availability (interest, adjustments, disbursements, joint accounts)
+    is configured per program code.
+healthcheck:
+  endpoints: [ping, ping_pingwithheaders]
+  docs: https://developer.greendot.com/embedded-finance/docs/healthcheck-apis
+cross_links:
+  authentication: authentication/green-dot-authentication.yml
+  errors: errors/green-dot-error-codes.yml
+  lifecycle: lifecycle/green-dot-lifecycle.yml
+  webhooks: asyncapi/green-dot-webhooks.yml

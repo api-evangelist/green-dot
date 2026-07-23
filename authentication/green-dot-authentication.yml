@@ -1,0 +1,49 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.greendot.com/embedded-finance/docs/baas-api-authentication
+docs: https://developer.greendot.com/embedded-finance/docs/baas-api-authentication
+summary:
+  types: [oauth2, http]
+  oauth2_flows: [clientCredentials]
+  api_key_in: []
+  notes: >-
+    Machine-to-machine OAuth 2.0. Client obtains a Bearer access token from the
+    token endpoint using HTTP Basic (Base64 ClientId:ClientSecret) with
+    grant_type=client_credentials, then presents it as Authorization: Bearer on
+    every call. Tokens are valid 24h (expires_in 86400); recommended cache 23h.
+    IP allow-listing of partner ranges is required before access is granted.
+    Credentials are provisioned per-partner during commercial onboarding.
+schemes:
+  - name: oauth2ClientCredentials
+    type: oauth2
+    flow: clientCredentials
+    token_endpoint: '{BaasUrl}/authentication'
+    grant_type: client_credentials
+    client_authentication: basic
+    token_type: Bearer
+    token_ttl_seconds: 86400
+    scope_style: space-delimited
+    scope_optional: true
+    example_scopes: [general, demo]
+    sources: [docs]
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    applied_to: all protected BaaS endpoints
+    sources: [docs]
+required_headers:
+  - name: Authorization
+    value: 'Bearer <access_token> (or Basic <base64 clientId:clientSecret> on token request)'
+  - name: X-GD-RequestId
+    value: New GUID per call, required for tracing and idempotency
+  - name: Content-Type
+    value: application/json
+auth_errors:
+  - {status: 401, reason: Incorrect credentials or unauthorized scope}
+  - {status: 401, reason: Expired authorization token}
+  - {status: 401, reason: Out of credential scopes}
+  - {status: 400, reason: Malformed request or wrong grant_type}
+constraints:
+  ip_allowlisting_required: true
+  field_level_encryption: true
+  onboarding: contact-sales

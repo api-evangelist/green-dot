@@ -1,0 +1,42 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.greendot.com/embedded-finance/changelog
+docs:
+  changelog: https://developer.greendot.com/embedded-finance/changelog
+  release_notes_overview: https://developer.greendot.com/embedded-finance/docs/release-notes
+scheme:
+  style: dated-releases
+  cadence: per-sprint (published shortly after each Partner Integration Environment / PIE release)
+  categories: [Breaking Changes, Additions, Changes, Deprecated/Removed]
+  focus: partner-impacting changes only
+entries:
+  - version: '2026-07-14'
+    sprint: '2026-07-13'
+    breaking: false
+    highlights: [No changes to APIs or developer portal.]
+    url: https://developer.greendot.com/embedded-finance/changelog/release-7-14-2026
+  - version: '2026-07-01'
+    sprint: '2026-06-30'
+    breaking: false
+    highlights: [No changes to APIs or developer portal.]
+    url: https://developer.greendot.com/embedded-finance/changelog/release-7-01-2026
+  - version: '2026-06-16'
+    sprint: '2026-06-15'
+    breaking: false
+    highlights: [No changes to APIs or developer portal.]
+    url: https://developer.greendot.com/embedded-finance/changelog/release-6-16-26
+  - version: '2026-06-04'
+    sprint: '2026-06-03'
+    breaking: false
+    highlights: [No changes to APIs or developer portal.]
+    url: https://developer.greendot.com/embedded-finance/changelog/release-6-04-2026
+  - version: '2026-05-15'
+    sprint: '2026-05-14'
+    breaking: false
+    additions:
+      - New Sandbox Environment guide (environment behavior, access requirements, expectations).
+      - New BaaS Testing guide (end-to-end authentication and request guidance).
+    changes:
+      - Release Notes page restructured for clarity and partner-impact focus.
+      - Green Dot API Platform Overview page updated with standardized product-area descriptions.
+    url: https://developer.greendot.com/embedded-finance/changelog/5-15-2026

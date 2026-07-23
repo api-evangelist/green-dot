@@ -1,0 +1,63 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.greendot.com/embedded-finance/docs/sandbox-environment
+docs:
+  sandbox: https://developer.greendot.com/embedded-finance/docs/sandbox-environment
+  testing: https://developer.greendot.com/embedded-finance/docs/testing
+summary: >-
+  Green Dot BaaS provides a non-production Sandbox (also referred to as the
+  Partner Integration Environment, PIE) for development, integration, and
+  functional testing. It mirrors Production behavior at the API/protocol level
+  but processes no real money and creates no real accounts, cards, or payment
+  instruments — all data is simulated and may be reset. Access is gated behind
+  partner onboarding.
+environments:
+  - name: Sandbox (PIE)
+    purpose: development, integration, functional testing
+    processes_real_money: false
+    creates_real_accounts: false
+    data: simulated / synthetic, may be reset or reused, not persistent
+  - name: Production
+    purpose: live
+separation:
+  fully_isolated: true
+  separate_base_urls: true
+  separate_credentials: true
+  separate_ip_allowlisting: true
+  cross_environment_reuse: false
+  note: Sandbox tokens, credentials, and identifiers cannot be used in Production or vice versa.
+access_requirements:
+  steps:
+    - Complete partner onboarding
+    - Receive Sandbox-specific Client ID and Client Secret
+    - Submit Sandbox IP address ranges for allow-listing
+    - Receive confirmation that allow-listing is complete
+  note: API access is not granted until IP allow-listing is approved, even if credentials are issued.
+authentication:
+  matches_production: true
+  flow: oauth2 client_credentials
+  encryption_required: true
+  note: >-
+    Field-level encryption requirements are identical to Production; public
+    encryption keys must be exchanged before testing encrypted endpoints.
+test_values:
+  published: false
+  note: >-
+    Green Dot does NOT publish shared magic test values (test cards / test SSNs
+    / hosted test tokens) on the public portal — test data is synthetic and
+    provisioned per partner in the Sandbox. No test values were fabricated here.
+supported_testing:
+  - Functional integration testing
+  - OAuth authentication and authorization behavior
+  - Request/response format validation
+  - Encryption and decryption workflows
+  - Error handling and edge cases (expected error conditions)
+not_supported:
+  - Load, performance, or stress testing
+  - Production-scale volume
+promote_to_production_checklist:
+  - Successfully authenticated and exercised required APIs in Sandbox
+  - Implemented encryption/decryption where required
+  - Validated error-handling paths
+  - Confirmed readiness for Production security and compliance requirements
+  - Obtain separate Production credentials and IP allow-listing approval

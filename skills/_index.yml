@@ -1,0 +1,20 @@
+generated: '2026-07-23'
+method: generated
+source: >-
+  Generated from the documented Green Dot Arc BaaS API Reference operation groups
+  and the captured conventions/errors/authentication/webhooks artifacts. Every
+  cited operation maps to a real endpoint in the public API Reference; no
+  operations were invented.
+skills:
+  - file: green-dot-enroll-and-service-account.md
+    name: Enroll an end user and service their account
+    api: Green Dot Arc BaaS
+    operations: [enrollments_post_createenrollment, kyc_post_createkyc1, account_get_getaccount, account_get_getauthcustomerenrollment, purse_post_createpurse]
+  - file: green-dot-pay-a-bill.md
+    name: Pay a bill for an account holder
+    api: Green Dot Arc BaaS
+    operations: [account_get_getaccount, billpay_post_createpayee, billpay_post_createpayment]
+  - file: green-dot-disburse-funds.md
+    name: Disburse funds to a recipient
+    api: Green Dot Arc BaaS
+    operations: [disbursement_post_createachlink, disbursement_post_createbankcardlink, disbursement_post_createcashlink, disbursement_post_transfer, disbursement_get_gettransferstatus]

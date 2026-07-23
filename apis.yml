@@ -445,8 +445,40 @@ common:
     url: https://www.linkedin.com/company/green-dot-corporation
   - type: LlmsText
     url: https://developer.greendot.com/llms.txt
+  - type: LLMsTxt
+    url: llms/green-dot-llms.txt
   - type: Blog
     url: https://www.greendot.com/blog
+  - type: PrivacyPolicy
+    url: https://secure.greendot.com/greendot/account/technology-privacy-statement
+  - type: ChangeLog
+    url: https://developer.greendot.com/embedded-finance/changelog
+  - type: Conventions
+    url: conventions/green-dot-conventions.yml
+  - type: Idempotency
+    url: conventions/green-dot-conventions.yml
+  - type: Authentication
+    url: authentication/green-dot-authentication.yml
+  - type: OAuthScopes
+    url: scopes/green-dot-scopes.yml
+  - type: Sandbox
+    url: sandbox/green-dot-sandbox.yml
+  - type: ErrorCatalog
+    url: errors/green-dot-error-codes.yml
+  - type: Lifecycle
+    url: lifecycle/green-dot-lifecycle.yml
+  - type: Deprecation
+    url: https://developer.greendot.com/embedded-finance/docs/release-notes
+  - type: Webhooks
+    url: asyncapi/green-dot-webhooks.yml
+  - type: Conformance
+    url: conformance/green-dot-conformance.yml
+  - type: DataModel
+    url: data-model/green-dot-data-model.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: ChangeLog
+    url: changelog/green-dot-changelog.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

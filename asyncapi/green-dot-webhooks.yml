@@ -1,0 +1,57 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.greendot.com/embedded-finance/docs/webhooks-overview
+spec_type: WebhookCatalog
+docs:
+  overview: https://developer.greendot.com/embedded-finance/docs/webhooks-overview
+  samples: https://developer.greendot.com/embedded-finance/docs/webhook-samples
+  transaction_webhooks: https://developer.greendot.com/embedded-finance/docs/transaction-webhooks
+  callback_methods: https://developer.greendot.com/embedded-finance/docs/callback-methods
+summary: >-
+  The Green Dot BaaS platform delivers asynchronous event notifications
+  (Webhooks, a.k.a. Publish Notifications / PNs) to a partner-hosted HTTPS
+  endpoint. Endpoints are configured per event type. Delivery is an HTTPS POST;
+  Green Dot authenticates to the partner with an API key in the header, and the
+  partner must echo the x-GD-RequestId header on the response. PCI data (exp
+  date, PIN, CVV) and SSN are excluded from webhook bodies (only last-4 PAN +
+  BIN). No published AsyncAPI document exists; this is the documented webhook
+  event catalog.
+transport: https-post
+delivery_auth:
+  partner_receives: api-key-header
+  token_flow: 'OAuth token with scope post:webhook (bank-events)'
+required_response_headers: [x-GD-RequestId]
+retry:
+  supported: true
+  opt_in: per-partner configuration
+  trigger: 'HTTP 5xx, timeout, HTTP 0 / hard failure (DNS, connect, SSL)'
+  schedule: hourly, up to 24 hours, until success or attempts exhausted
+  async_retry: available for all webhooks
+reconciliation:
+  transaction_webhook_reconciliation_file: true
+  delivery: daily via SFTP
+  note: Contact Green Dot representative to enable; files may be encrypted per partner config.
+events:
+  - {name: Transaction Events, description: Transaction authorizations and posted transactions (multi-clearing sent as one message with two events).}
+  - {name: Statement Ready Events, description: An E-Statement is ready for an account.}
+  - {name: Account Updated Events, description: Changes to the status of accounts.}
+  - {name: Interest Paid Events, description: Interest is paid to a purse.}
+  - {name: ACH Transfer Events, description: A valid ACH transfer is requested or its status is updated.}
+  - {name: Failed Transfer Events, description: Retried transactions fail due to Non-Sufficient Funds (NSF).}
+  - {name: NOC Alert Events, description: Green Dot receives ACH Notifications of Change (NOCs) for a program.}
+  - {name: User Updated Events, description: A user profile is updated (name, address, email, or phone).}
+  - {name: Card Updated Events, description: A card is ordered for the first time or as a replacement.}
+  - {name: Check Updated Events, description: Check declined/approved by agent, check posted, check returned.}
+  - {name: eWallet Events, description: Token activations, completions, and status updates (Apple Pay / Google Pay).}
+  - {name: Bill Payment Events, description: Bill payment debit, failed debit, or credit due.}
+  - {name: Paper Check Events, description: Clearing status of paper checks is updated.}
+  - {name: Paper Check Order Events, description: Paper check orders initiated, ordered, declined, or notReceived.}
+  - {name: Mail Tracking Events, description: Delivery stages of a physical card once mailed.}
+  - {name: Promotional Events, description: Promotional transactions are processed.}
+  - {name: MRDC Check Deposit Events, description: A MRDC (mobile) check deposit fails.}
+  - {name: P2P Transfer Events, description: A person-to-person transfer is processed.}
+  - {name: ATM Pin Update Events, description: A successful ATM PIN change is made.}
+  - {name: Auto Money Movement (AMM) Events, description: ACH In, date-driven, and failed AMM events plus rule expiry reminders/notifications.}
+  - {name: Adjustment Final Status Events, description: An adjustment has failed all retries.}
+  - {name: Direct Deposit Switch Events, description: Events for Green Dot's Direct DD Switch feature.}
+security_note: PCI data (expiration date, PIN, CVV) and SSN are never included in webhook bodies; only last-4 PAN and BIN.

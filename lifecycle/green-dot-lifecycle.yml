@@ -1,0 +1,38 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.greendot.com/embedded-finance/docs/release-notes
+versioning:
+  scheme: uri-path
+  notes: >-
+    Major versions are carried in the resource path (e.g. Full PCI Data Access
+    V2, barcode generateBarcodeV2, transfer-limits-and-fee-rates V2). No global
+    version header is documented. Product/feature availability is gated per
+    program code by configuration.
+  changelog: changelog/green-dot-changelog.yml
+deprecation:
+  policy_documented: true
+  policy_url: https://developer.greendot.com/embedded-finance/docs/release-notes
+  mechanism: dated release notes
+  notes: >-
+    Release Notes explicitly enumerate "Deprecated or removed functionality" and
+    "Updates to authentication, encryption, or required headers" per release, and
+    partners are directed to plan for upcoming deprecations. No RFC 8594
+    Sunset/Deprecation response headers are documented on the public portal.
+  sunset_header: false
+sla:
+  documented: false
+  notes: >-
+    No public uptime/SLA target is published on the developer portal; SLAs are
+    established in the per-partner commercial agreement.
+status_page:
+  public: false
+  notes: >-
+    No public status page was found (status.greendot.com does not resolve; the
+    developer portal /status path returns the ReadMe SPA shell, not a status
+    page). Health is checked programmatically via the Healthcheck (ping) APIs.
+  healthcheck_docs: https://developer.greendot.com/embedded-finance/docs/healthcheck-apis
+environments:
+  - name: Sandbox (PIE)
+    ref: sandbox/green-dot-sandbox.yml
+  - name: Production
+release_cadence: per-sprint dated releases

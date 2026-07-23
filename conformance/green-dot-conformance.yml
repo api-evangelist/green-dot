@@ -1,0 +1,43 @@
+generated: '2026-07-23'
+method: searched
+source:
+  - https://developer.greendot.com/embedded-finance/docs/baas-api-authentication
+  - https://developer.greendot.com/embedded-finance/docs/idempotency
+  - https://developer.greendot.com/embedded-finance/docs/full-pci-data-access-v2
+  - https://developer.greendot.com/embedded-finance/docs/encryption-in-baas-api
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: OAuth 2.0 client-credentials (machine-to-machine) documented for all BaaS endpoints.
+  - id: oauth2-client-credentials
+    conforms: true
+    evidence: grant_type=client_credentials with HTTP Basic client auth and Bearer access tokens.
+  - id: idempotency
+    conforms: true
+    evidence: X-GD-RequestId idempotency key documented; POST /enrollments true-idempotent; API locking on overlapping calls.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom HTTP-status + numeric code/subCode envelope, not application/problem+json.
+  - id: pci-dss
+    conforms: true
+    evidence: Green Dot Bank is a card issuer; Full PCI Data Access V2 endpoints, tokenization, and field-level encryption for card data are documented. (Regulatory posture, not a published certificate URL.)
+  - id: glba
+    conforms: true
+    evidence: Green Dot Bank is a GLBA-regulated US financial institution; consumer privacy handled under GLBA.
+  - id: nacha-ach
+    conforms: true
+    evidence: ACH APIs implement NACHA ACH rails including Notifications of Change (NOC) handling.
+  - id: field-level-encryption
+    conforms: true
+    evidence: Public-key field-level encryption required for sensitive identity/PCI fields (BouncyCastle reference impl).
+  - id: fdic-insured
+    conforms: true
+    evidence: Green Dot Bank is a chartered, FDIC-insured member bank (corporate/regulatory status).
+  - id: webhooks
+    conforms: true
+    evidence: 22 documented event types delivered via HTTPS POST with retry and reconciliation.
+notes: >-
+  Regulatory conformance items (PCI DSS, GLBA, FDIC, NACHA) reflect Green Dot
+  Bank's status as a chartered US bank and card issuer, evidenced in product
+  documentation. Green Dot does not publish a public trust center / certificate
+  repository, so no `Compliance` link-property pointer is asserted.

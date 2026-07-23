@@ -1,0 +1,75 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  Derived from the documented Green Dot BaaS API Reference operation groups and
+  resource paths (developer.greendot.com/embedded-finance) — no OpenAPI is
+  published publicly, so relationships are inferred from resource path nesting
+  and id-reference fields named in endpoint documentation.
+root_scope:
+  entity: Program
+  identifier: programCode
+  note: Nearly all resources are namespaced under /programs/{programCode}/...
+entities:
+  - name: Program
+    identifier: programCode
+    description: Top-level partner program; gates feature/product availability by configuration.
+  - name: Account
+    identifier: accountIdentifier (GUID)
+    description: Core DDA/prepaid banking account for an end user; central entity for servicing.
+  - name: User
+    identifier: userIdentifier
+    description: An account holder (accounts may be joint with multiple users).
+  - name: Purse
+    identifier: purseIdentifier
+    description: Primary/savings/credit-builder spend bucket within an account.
+  - name: Enrollment
+    description: Account-creation/identity-capture record (KYC/KYB/OFAC/ITIN/Matricula).
+  - name: PaymentInstrument
+    description: Issued card or token tied to an account (incl. eWallet push provisioning).
+  - name: ExternalAccount
+    description: Linked external bank account or external debit/credit card for funding/money movement.
+  - name: Transfer
+    description: Money movement (single/multi-phase, instant, ACH, wire, MRDC, GFT, disbursement).
+  - name: Transaction
+    description: Posted/pending transaction with events and categorization.
+  - name: Payee
+    description: BillPay merchant or person payee for bill payments.
+  - name: Disbursement
+    description: Outbound payout to a recipient (ACH/bankcard/cash link).
+  - name: Barcode
+    description: eCash barcode for retail cash add/pay-near-me.
+  - name: AMMRule
+    description: Auto Money Movement rule attached to an account.
+  - name: InterestRate
+    description: Interest rate/tier applied to primary or savings purses.
+  - name: CashbackReward
+    description: Cashback rewards program record on an account (incl. eGift).
+  - name: Affiliate
+    description: Program affiliate and affiliate-settlement records.
+  - name: CareCase
+    description: Customer support / dispute-automation case.
+  - name: TaxDocument
+    description: INT-1099 and other tax forms for interest-bearing accounts.
+relationships:
+  - {from: Program, type: has_many, to: Account, via: programCode}
+  - {from: Account, type: has_many, to: User, via: accountIdentifier}
+  - {from: Account, type: has_many, to: Purse, via: accountIdentifier}
+  - {from: Account, type: has_one, to: Enrollment, via: accountIdentifier}
+  - {from: Account, type: has_many, to: PaymentInstrument, via: accountIdentifier}
+  - {from: Account, type: has_many, to: ExternalAccount, via: accountIdentifier}
+  - {from: Account, type: has_many, to: Transfer, via: accountIdentifier}
+  - {from: Account, type: has_many, to: Transaction, via: accountIdentifier}
+  - {from: Account, type: has_many, to: Payee, via: accountIdentifier}
+  - {from: Account, type: has_many, to: AMMRule, via: accountIdentifier}
+  - {from: Account, type: has_many, to: CashbackReward, via: accountIdentifier}
+  - {from: Account, type: has_many, to: TaxDocument, via: accountIdentifier}
+  - {from: Account, type: has_many, to: CareCase, via: accountIdentifier}
+  - {from: Purse, type: has_one, to: InterestRate, via: purseIdentifier}
+  - {from: Payee, type: has_many, to: Transaction, via: payeeIdentifier (bill payment)}
+  - {from: Disbursement, type: belongs_to, to: Program, via: programCode}
+  - {from: ExternalAccount, type: has_many, to: Transfer, via: 'external account link (ACH in/out)'}
+  - {from: Program, type: has_many, to: Affiliate, via: programCode}
+notes: >-
+  ID prefixes/domains are not published publicly; identifiers are documented as
+  GUIDs (accountIdentifier) and opaque strings. Relationships derived from
+  documented path nesting and reference-field names only — none fabricated.
