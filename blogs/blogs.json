@@ -6,9 +6,10 @@
       "feed_url": "https://www.greendot.com/blog",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     }
   ],
-  "fetched": "2026-07-20T13:31:34Z",
+  "fetched": "2026-08-01T15:38:58Z",
   "post_count": 5
 }
