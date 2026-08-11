@@ -12,6 +12,17 @@ description: >-
   API surface. The public developer portal (developer.greendot.com) documents
   300+ JSON/OAuth2 endpoints; production access, credentials, and the full
   Swagger definition are provisioned per-partner after a commercial onboarding.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-11'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: contact-sales
@@ -425,6 +436,8 @@ apis:
       - type: APIReference
         url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
 common:
+  - type: AgentSkill
+    url: skills/green-dot-disburse-funds.md
   - type: Login
     url: https://secure.greendot.com/greendot/login
   - type: DomainSecurity
