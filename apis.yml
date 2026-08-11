@@ -469,7 +469,7 @@ common:
     url: errors/green-dot-error-codes.yml
   - type: Lifecycle
     url: lifecycle/green-dot-lifecycle.yml
-  - type: Deprecation
+  - type: DeprecationPolicy
     url: https://developer.greendot.com/embedded-finance/docs/release-notes
   - type: Webhooks
     url: asyncapi/green-dot-webhooks.yml
@@ -477,7 +477,7 @@ common:
     url: conformance/green-dot-conformance.yml
   - type: DataModel
     url: data-model/green-dot-data-model.yml
-  - type: AgentSkill
+  - type: AgentSkills
     url: skills/_index.yml
   - type: ChangeLog
     url: changelog/green-dot-changelog.yml
