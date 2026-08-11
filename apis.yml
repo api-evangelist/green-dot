@@ -425,6 +425,8 @@ apis:
       - type: APIReference
         url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
 common:
+  - type: Login
+    url: https://secure.greendot.com/greendot/login
   - type: DomainSecurity
     url: security/green-dot-domain-security.yml
   - type: Website
