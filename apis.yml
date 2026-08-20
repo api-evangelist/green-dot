@@ -88,6 +88,13 @@ apis:
       throughout the lifecycle of a customer relationship.
     humanURL: https://developer.greendot.com/embedded-finance/docs/account-user-management-overview
     tags:
+      - Account
+      - User
+      - Account Management
+      - Statements
+      - Banking as a Service
+      - United States
+    tags_raw:
       - Accounts
       - Users
       - Account Management
@@ -113,6 +120,12 @@ apis:
       platform's standard headers and idempotency conventions.
     humanURL: https://developer.greendot.com/embedded-finance/docs/transaction-history
     tags:
+      - Transaction
+      - Transaction History
+      - Insights
+      - Banking as a Service
+      - United States
+    tags_raw:
       - Transactions
       - Transaction History
       - Insights
@@ -274,6 +287,13 @@ apis:
     humanURL: https://developer.greendot.com/embedded-finance/docs/cash-deposits-and-payments-overview
     tags:
       - Cash Deposits
+      - Ecash
+      - Barcodes
+      - Retail Network
+      - Banking as a Service
+      - United States
+    tags_raw:
+      - Cash Deposits
       - eCash
       - Barcode
       - Retail Network
@@ -324,6 +344,13 @@ apis:
     humanURL: https://developer.greendot.com/embedded-finance/docs/p2p
     tags:
       - P2P
+      - Peer-to-Peer
+      - Payments
+      - Money Movement
+      - Banking as a Service
+      - United States
+    tags_raw:
+      - P2P
       - Peer to Peer
       - Payments
       - Money Movement
@@ -344,6 +371,12 @@ apis:
       near real time rather than polling.
     humanURL: https://developer.greendot.com/embedded-finance/docs/webhooks-overview
     tags:
+      - Webhook
+      - Event
+      - Notification
+      - Banking as a Service
+      - United States
+    tags_raw:
       - Webhooks
       - Events
       - Notifications
