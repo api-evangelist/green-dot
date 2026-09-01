@@ -287,8 +287,8 @@ apis:
     humanURL: https://developer.greendot.com/embedded-finance/docs/cash-deposits-and-payments-overview
     tags:
       - Cash Deposits
-      - eCash
-      - Barcode
+      - Ecash
+      - Barcodes
       - Retail Network
       - Banking as a Service
       - United States
@@ -344,7 +344,7 @@ apis:
     humanURL: https://developer.greendot.com/embedded-finance/docs/p2p
     tags:
       - P2P
-      - Peer to Peer
+      - Peer-to-Peer
       - Payments
       - Money Movement
       - Banking as a Service
