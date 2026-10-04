@@ -1,6 +1,6 @@
 aid: green-dot
 url: https://raw.githubusercontent.com/api-evangelist/green-dot/refs/heads/main/apis.yml
-name: Green Dot Corporation
+name: Green Dot
 kind: company
 description: >-
   Green Dot Corporation (NYSE: GDOT) is a US fintech and bank holding company
@@ -37,6 +37,9 @@ accessModel:
   generated: '2026-07-23'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/green-dot.png
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
   - Fintech
   - Banking as a Service
@@ -530,3 +533,4 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-legal-name: Green Dot Corporation
