@@ -472,6 +472,12 @@ apis:
       - type: APIReference
         url: https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api
 common:
+  - type: Plans
+    url: plans/green-dot-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/green-dot-rate-limits.yml
+  - type: FinOps
+    url: finops/green-dot-finops.yml
   - type: AgentSkill
     url: skills/green-dot-disburse-funds.md
   - type: Login
