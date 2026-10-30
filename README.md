@@ -1,4 +1,4 @@
-# Green Dot Corporation (green-dot)
+# Green Dot
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,23 +64,137 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Green Dot Corporation (NYSE: GDOT) is a US fintech and bank holding company whose subsidiary Green Dot Bank is a chartered, FDIC-insured member bank. Its Green Dot Arc embedded-finance / Banking-as-a-Service (BaaS) platform lets brands and fintech partners embed banking and payments — enrollment, KYC/KYB, accounts, ACH, transfers, bill pay, card issuing, cash deposits, mobile check deposit, disbursements, and P2P — through a REST API surface. The public developer portal (developer.greendot.com) documents 300+ JSON/OAuth2 endpoints; production access and the full Swagger definition are provisioned per-partner after commercial onboarding.
+Green Dot Corporation (NYSE: GDOT) is a US fintech and bank holding company whose subsidiary Green Dot Bank is a chartered, FDIC-insured member bank. Its Green Dot Arc embedded-finance / Banking-as-a-Service (BaaS) platform lets brands and fintech partners embed banking and payments — account enrollment, KYC/KYB, DDA and prepaid accounts, ACH, transfers, bill pay, card issuing, cash deposits, mobile check deposit, disbursements, and P2P — through a REST API surface. The public developer portal (developer.greendot.com) documents 300+ JSON/OAuth2 endpoints; production access, credentials, and the full Swagger definition are provisioned per-partner after a commercial onboarding.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/green-dot/refs/heads/main/apis.yml)
+**Areas:** Fintech · Banking as a Service · Embedded Finance · Prepaid Cards · Banking · Payments · Money Movement · United States
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Green Dot on APIs.io
 
-## Tags:
+Everything profiled for Green Dot is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/green-dot/](https://apis.io/providers/green-dot/)** — or go straight to one of the APIs or properties below.
 
- - Fintech, Prepaid Cards, Banking
+### APIs (17)
 
-## Timestamps
+- [Green Dot Enrollments API](https://apis.io/apis/green-dot/enrollments-api/) — The Enrollments API is typically the first API used in a partner integration and establishes the initial banking relationship for a new end user. It covers…
+- [Green Dot Accounts & Users API](https://apis.io/apis/green-dot/accounts-users-api/) — Account and user management endpoints for the BaaS platform: retrieve and update account details, manage account status and terms acceptances, manage users…
+- [Green Dot Transaction History API](https://apis.io/apis/green-dot/transaction-history-api/) — Transaction history and enrichment endpoints for retrieving posted and pending transactions on an account, transaction events, and transaction…
+- [Green Dot Transfers & Money Movement API](https://apis.io/apis/green-dot/transfers-money-movement-api/) — Transfers APIs enable customers to move funds to and from internal accounts, purses, and external bank accounts. Includes single- and multi-phase transfers,…
+- [Green Dot ACH API](https://apis.io/apis/green-dot/ach-api/) — ACH APIs support ACH transfers into and out of BaaS accounts, including retrieval and filtering of ACH transfers by status and date range, external account…
+- [Green Dot BillPay API](https://apis.io/apis/green-dot/billpay-api/) — The BillPay API enables bill payment functionality within partner applications, allowing end users to pay billers from their embedded account. Covers…
+- [Green Dot Payment Instruments API](https://apis.io/apis/green-dot/payment-instruments-api/) — Payment Instruments APIs manage the cards and tokens tied to an account — issuing and managing payment instruments, custom card options, PCI data access…
+- [Green Dot External Card Management API](https://apis.io/apis/green-dot/external-card-management-api/) — External Card Management APIs let account holders link, list, and remove external debit or credit cards, and support card-funded flows. Used to attach…
+- [Green Dot Disbursements API](https://apis.io/apis/green-dot/disbursements-api/) — The Disbursements API supports paying out funds to recipients — creating recipients, linking payee accounts, executing single-phase transfers with webhook…
+- [Green Dot Cash Deposits & eCash API](https://apis.io/apis/green-dot/cash-deposits-ecash-api/) — Cash Deposits and Payments APIs — Green Dot's retail cash network capability — let end users add cash or make cash payments at retail locations. Covers…
+- [Green Dot MRDC (Mobile Check Deposit) API](https://apis.io/apis/green-dot/mrdc-check-deposit-api/) — MRDC (Mobile Remote Deposit Capture) APIs manage mobile check deposits — submitting checks, retrieving MRDC transfers and lists, check images, on-hold…
+- [Green Dot Closed Loop P2P API](https://apis.io/apis/green-dot/closed-loop-p2p-api/) — Closed Loop P2P (Peer-to-Peer) APIs move money between two account holders within the same program. Endpoints retrieve individual and listed P2P transfers,…
+- [Green Dot Webhooks & Event Notifications](https://apis.io/apis/green-dot/webhooks-api/) — Webhooks provide asynchronous event notifications to partner systems for account updates, transactions, and money-movement events. Documented with webhook…
+- [Green Dot Interest Rate & Accrued Interest API](https://apis.io/apis/green-dot/interest-rate-api/) — Interest Rate APIs add and manage interest rates on primary and savings purses and process accrued-interest calculations for a program, including…
+- [Green Dot Cashback Rewards API](https://apis.io/apis/green-dot/cashback-rewards-api/) — Cashback Rewards APIs manage cashback rewards programs on partner accounts — creating and managing rewards, plus related eGift capability. Lets partners…
+- [Green Dot Customer Care API](https://apis.io/apis/green-dot/customer-care-api/) — Customer Care APIs create and manage customer support cases, customize UI for customer support, and enable customers to open support cases directly.…
+- [Green Dot ATM & Retail Locators API](https://apis.io/apis/green-dot/atm-retail-locators-api/) — ATM & Retail Locator APIs locate nearby ATMs and Green Dot retail locations for cash deposits, withdrawals, and reload, returning geospatial location and…
 
-- **Created:** 2026-04-19
-- **Modified:** 2026-04-19
+### Published properties
 
-## Maintainers
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**FN:** Kin Lane
+#### AsyncAPI (1)
 
-**Email:** kin@apievangelist.com
+Event-driven and webhook contracts.
+
+- [Green Dot Webhooks](https://apis.io/asyncapis/green-dot/green-dot-webhooks/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Green Dot Authentication](https://apis.io/security/green-dot/green-dot-authentication/)
+- [Green Dot Domain Security](https://apis.io/security/green-dot/green-dot-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Green Dot Scopes](https://apis.io/scopes/green-dot/green-dot-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Green Dot Plans Pricing](https://apis.io/plans/green-dot/green-dot-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Green Dot Rate Limits](https://apis.io/rate-limits/green-dot/green-dot-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Green Dot Finops](https://apis.io/finops/green-dot/green-dot-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.greendot.com)
+- [Documentation](https://developer.greendot.com/embedded-finance/docs/apis-overview)
+- [API reference](https://developer.greendot.com/embedded-finance/reference/getting-started-with-your-api)
+- [Changelog](https://developer.greendot.com/embedded-finance/changelog)
+- [Blog](https://www.greendot.com/blog)
+- [Terms of service](https://developer.greendot.com/embedded-finance/docs/terms-of-use)
+- [Privacy policy](https://secure.greendot.com/greendot/account/technology-privacy-statement)
+- [GitHub](https://github.com/Green-Dot-Corporation)
+
+## API Evangelist rating
+
+**Kin Score 32.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 11.3 |
+| Access clarity | 22.4 |
+
+**Agent readiness 27.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 34.8** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/green-dot/](https://apis.io/providers/green-dot/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Green Dot: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/green-dot/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
