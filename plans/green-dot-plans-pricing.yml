@@ -1,0 +1,68 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Green Dot Corporation
+providerId: green-dot
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Fintech
+  - Banking-as-a-Service
+  - Prepaid Cards
+  - Embedded Finance
+description: Green Dot Corporation operates banking-as-a-service (BaaS), embedded finance, prepaid
+  card, and earned-wage-access programs through its Arc platform and Green Dot Network. As of the
+  reconciliation date, Green Dot does not publish self-serve API pricing or developer plans on its
+  public website. All API access is presumed to be negotiated as part of a partner / program
+  contract through the Green Dot business team.
+notes: No public API pricing tiers found. Green Dot positions API access via partnerships (Arc
+  embedded finance, Green Dot Network, paycard / EWA, tax practice solutions). Reconcile when a
+  public partner pricing page becomes available.
+sources:
+  - https://www.greendot.com
+  - https://www.greendot.com/arc
+plans:
+  - id: green-dot-partner
+    name: Partner / Program (negotiated)
+    type: enterprise
+    description: Banking-as-a-service / embedded finance partnership covering issuing, processing,
+      ledger, and program management. Pricing is negotiated per program (interchange share, BIN
+      sponsorship fees, account fees, support).
+    entries:
+      - label: Program agreement
+        name: program_contract
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+    elements:
+      - name: Negotiated commercial agreement
+      - name: Green Dot Corporation API
+      - name: BIN sponsorship and program management
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - negotiated
+  plans:
+  - name: Partner / Program (negotiated)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
